@@ -51,17 +51,16 @@ char* Math::Add(const char* a, const char* b) {
     if (a == NULL || b == NULL)
         return NULL;
     char aux[100] = "";
-    int i;
-     for (i = 0; a[i] != NULL && b[i] != NULL; i++)
-        aux[i] = char((a[i] + b[i])%256);
-     while (a[i] != NULL) {
-         aux[i] = a[i];
-         i++;
-     }
-     while (b[i] != NULL) {
-         aux[i] = b[i];
-         i++;
-     }
-    aux[strlen(aux)] = NULL;
+    int k=0;
+    int carry=0;
+    for (int i = strlen(a)-1, j = strlen(b)-1; i >= 0 && j >= 0; i--, j--) {
+        aux[k] = (a[i] - '0' + b[j] - '0' + carry) % 10 + '0';
+        k++;
+        carry  = (a[i] - '0' + b[j] - '0') / 10;
+    }
+    aux[k] = NULL;
+    for (int i=k-1;i>=0;i--)
+        std::cout << aux[i];
+    std::cout << '\n';
     return aux;
 }

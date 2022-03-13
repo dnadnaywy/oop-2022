@@ -7,8 +7,8 @@ using namespace std;
 int main()
 {
     Math p;
-    const char* ana = "ana";
-    const char* mere = "mere";
+    char ana[4]       = "123";
+    char mere[4] = "108";
     int a, b, c;
     double d, e, f;
     cin >> a >> b >> c;
